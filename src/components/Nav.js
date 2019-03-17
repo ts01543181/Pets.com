@@ -15,9 +15,14 @@ class Nav extends Component {
     render() {
         return (
             <div className="navbar-container">
+                <div className="logo-container"><Link to="/">LOGO</Link></div>
                 {
                     this.props.session.id ? 
-                    <button className="session-button" onClick={() => this.handleClick()}>Log Out</button> :
+                    <div>
+                        
+                        <button className="session-button" onClick={() => this.handleClick()}>Log Out</button> 
+                    </div>
+                        :
                     <div className="button-container">
                         <button className="session-button">
                             <Link to="/login">

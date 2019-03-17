@@ -9,7 +9,6 @@ const passport = require('passport');
 
 router.post("/register", (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
-    console.log(req.body)
     if (!isValid) {
       return res.status(400).json(errors);
     }
@@ -49,7 +48,7 @@ router.post("/register", (req, res) => {
 
 router.post('/login', (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
-  console.log(req.body)
+
   if (!isValid) {
     return res.status(400).json(errors);
   }
