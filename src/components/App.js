@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavContainer from "./NavContainer";
-import HomeContainer from "./HomeContainer";
+import BoardsContainer from "./BoardsContainer";
 import LoginContainer from "./LoginContainer";
 import SignupContainer from "./SignupContainer";
 import { Route, Switch, Redirect } from "react-router-dom";
@@ -14,10 +14,10 @@ class App extends Component {
       <div>
         <NavContainer />
         <Switch>
-          <ProtectedRoute exact path="/home" component={HomeContainer}/>
+          <ProtectedRoute exact path="/boards" component={BoardsContainer}/>
           <Route exact path="/login" component={LoginContainer} />
           <Route exact path="/signup" component={SignupContainer}/>
-          <Redirect to="/home"/>
+          <Redirect to="/boards"/>
         </Switch>
       </div>
     );

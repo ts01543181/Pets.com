@@ -1,6 +1,6 @@
-import { ADD_BOARD, DELETE_BOARD } from "../actions/actionType";
+import { ADD_BOARD, DELETE_BOARD, GET_BOARDS } from "../actions/actionType";
 
-const boardReducer = (state = [{id: "test1"}, {id:"test2"}], action) => {
+const boardReducer = (state = [], action) => {
     Object.freeze(state);
     switch (action.type) {
         case ADD_BOARD:
@@ -10,6 +10,8 @@ const boardReducer = (state = [{id: "test1"}, {id:"test2"}], action) => {
             const copy = [...state];
             copy.splice(ind, 1);
             return copy;
+        case GET_BOARDS:
+            return action.payload
         default:
             return state;
     }

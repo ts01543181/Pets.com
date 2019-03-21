@@ -1,0 +1,21 @@
+.boards-container {
+
+}
+
+.panel-container {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+
+.panel-container a {
+    display: block;
+}
+
+.boards-list-container {
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    width: 50%;
+}
+

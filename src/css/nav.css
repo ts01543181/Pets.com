@@ -1,0 +1,17 @@
+.navbar-container {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background: gray;
+}
+
+.logo-container {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.navbar-inner {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+}

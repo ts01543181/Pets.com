@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "../css/nav.css";
 
 class Nav extends Component {
     constructor(props) {
@@ -15,10 +16,10 @@ class Nav extends Component {
     render() {
         return (
             <div className="navbar-container">
-                <div className="logo-container"><Link to="/">LOGO</Link></div>
+                <div className="logo-container"><Link to="/">Hello</Link></div>
                 {
                     this.props.session.id ? 
-                    <div>
+                    <div className="navbar-inner">
                         
                         <button className="session-button" onClick={() => this.handleClick()}>Log Out</button> 
                     </div>
