@@ -30,7 +30,7 @@ router.post("/register", (req, res) => {
               newUser.password = hash;
               newUser.save()
                 .then(user => {
-                  const payload = { id: user.id, name: user.name };
+                  const payload = { id: user.id, name: user.name, email: user.email };
 
                   jwt.sign(payload, key.secret, { expiresIn: 3600 }, (err, token) => {
                     res.json({

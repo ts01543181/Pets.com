@@ -17,7 +17,10 @@ const UserSchema = new Schema({
     date: {
       type: Date,
       default: Date.now
-    }
-  });
+    },
+    teams: [{
+      type: Schema.Types.ObjectId
+    }]
+  }, {collection: "users"});
 
   module.exports = User = mongoose.model('users', UserSchema);

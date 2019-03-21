@@ -22,6 +22,6 @@ const BoardSchema = new Schema({
       type: String,
       required: true
     }
-  }, {collection: "boards"});
+  }, {collection: "boards", timestamps: { createdAt: "createdAt", updatedAt: "updatedAt"}});
 
   module.exports = Board = mongoose.model('boards', BoardSchema);

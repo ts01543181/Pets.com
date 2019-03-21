@@ -15,11 +15,14 @@ const TeamSchema = new Schema({
       required: true
     },
     admin: [{
-        type: String
+        type: Schema.Types.ObjectId
     }],
     members: [{
-      type: String
+      type: Schema.Types.ObjectId
+    }],
+    boards: [{
+      type: Schema.Types.ObjectId
     }]
-  }, {collection: "teams"});
+  }, {collection: "teams", timestamps: { createdAt: "createdAt"}});
 
   module.exports = Team = mongoose.model('teams', TeamSchema);

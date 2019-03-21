@@ -1,28 +1,53 @@
 const router = require("express").Router();
 const Team = require("../database/models/Team");
+const User = require("../database/models/User");
+
+router.post("/addBoard", (req, res) => {
+
+});
 
 router.post("/create", (req, res) => {
-    const newTeam = new Team({
-        title: req.body.title,
-        description: req.body.description,
-        private: req.body.private,
-        creator: req.body.creator,
-        admin: req.body.admin,
-        members: req.body.members
-    });
-    console.log(req.body)
-    newTeam.save()
-    .then(team => {
-        res.json(team);
+    const team = req.body.team;
+    const creator = req.body.creator;
+
+    User.findOne({ email: creator})
+    .then(user => {
+        // user.teams.push(team);
+        const newTeam = new Team({
+            title: team.title,
+            description: team.description,
+            private: team.private,
+            creator: team.creator,
+            admin: [user],
+            members: [user],
+            boards: []
+        });
+        user.teams.push(newTeam);
+        user.save();
+        newTeam.save()
+        .then(team => {
+            res.json(team);
+        })
     })
     .catch(e => {
-        console.log(e)
-        res.status(400).json("server failure")
+        res.status(400).json("server failure");
     });
 });
 
-router.get("/get/:currentUser", (req, res) => {
-
+router.get("/get/:email", (req, res) => {
+    const email = req.params.email;
+    const ret = [];
+    User.findOne({email})
+    .then(async (user) => {
+        user.teams.forEach(team => {
+            ret.push(Team.findOne({_id: team}));
+        })
+        const parsed = await Promise.all(ret);
+        res.json(parsed);
+    })
+    .catch(e => {
+        res.status(400).json("server failure");
+    })
 })
 
 

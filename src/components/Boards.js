@@ -13,6 +13,7 @@ class Boards extends Component {
 
     componentDidMount() {
         this.props.getBoards(this.props.session.email);
+        this.props.getTeams(this.props.session.email);
     }   
 
     createTeam() {
@@ -23,9 +24,10 @@ class Boards extends Component {
             admin: [this.props.session.email],
             members: [this.props.session.email]
         };
-        this.props.createTeam(mockTeam);
+        this.props.createTeam(mockTeam, this.props.session.email);
     }
     createBoard() {
+        console.log('here')
         const mockBoard = {
             title: "test",
             team: null,
@@ -62,7 +64,7 @@ class Boards extends Component {
                                 <li>{board.title}</li>
                             )
                         }
-                        <li onClick={this.creatBoard}>+ Create new board...</li>
+                        <li onClick={this.createBoard}>+ Create new board...</li>
                     </ul>
                 </div>
                 
