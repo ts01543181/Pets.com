@@ -5,17 +5,63 @@
 .panel-container {
     position: absolute;
     top: 10%;
-    left: 10%;
+    left: 18%;
+    width:13%;
 }
 
-.panel-container a {
-    display: block;
+.nav-list-container {
+    
 }
 
-.boards-list-container {
+.nav-item {
+    line-height: 27px;
+    
+}
+
+.nav-item a {
+    text-decoration: none;
+}
+
+.teams-list-container {
+    margin-top:20px;
+
+}
+.teams-list-title {
+
+}
+
+.teams {
+    height: 30px;
+    line-height: 27px;
+}
+.boards-list-outer-container {
     position: absolute;
     top: 10%;
-    left: 30%;
+    left: 33%;
     width: 50%;
 }
 
+.boards-title {
+    margin-left: 15px;
+}
+
+.boards {
+    display: inline-block;
+    width: 20%;
+    height: 5em;
+    margin: 15px;
+    border: 1px solid black;
+    border-radius: 4px;
+    position: relative;
+}
+
+.boards span {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+}
+
+.boards.create-button span{
+    top:35%;
+    margin: 0 auto;
+}

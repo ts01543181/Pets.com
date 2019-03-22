@@ -12,14 +12,13 @@ router.post("/create", (req, res) => {
 
     User.findOne({ email: creator})
     .then(user => {
-        // user.teams.push(team);
         const newTeam = new Team({
             title: team.title,
             description: team.description,
             private: team.private,
             creator: team.creator,
-            admin: [user],
-            members: [user],
+            admin: [user.email],
+            members: [user.email],
             boards: []
         });
         user.teams.push(newTeam);
@@ -36,9 +35,10 @@ router.post("/create", (req, res) => {
 
 router.get("/get/:email", (req, res) => {
     const email = req.params.email;
-    const ret = [];
+    
     User.findOne({email})
     .then(async (user) => {
+        const ret = [];
         user.teams.forEach(team => {
             ret.push(Team.findOne({_id: team}));
         })

@@ -27,7 +27,6 @@ class Boards extends Component {
         this.props.createTeam(mockTeam, this.props.session.email);
     }
     createBoard() {
-        console.log('here')
         const mockBoard = {
             title: "test",
             team: null,
@@ -41,31 +40,33 @@ class Boards extends Component {
         return (
             <div className="boards-container">         
                 <div className="panel-container">
-                    <Link to="/boards">Boards</Link>
-                    <Link to="/home">Home</Link>
-
-                    <div>
-                        <span>Teams</span>
-                        <ul>
-                            {
-                                this.props.teams.map((team) => {
-                                    return <li>{team.title}</li>
-                                })
-                            }
-                            <li onClick={this.createTeam}>+ Create a team</li>
-                        </ul>
+                    <div className="nav-list-container">
+                        <div className="nav-item"><Link to="/boards">Boards</Link></div>
+                        <div className="nav-item"><Link to="/home">Home</Link></div>
+                    </div>
+                    
+                    <div className="teams-list-container">
+                        <div className="teams teams-list title">Teams</div>
+                        {
+                            this.props.teams.map((team) => 
+                                <div className="teams">{team.title}</div>
+                            )
+                        }
+                        <div className="teams" onClick={this.createTeam}>+ Create a team</div>
                     </div>
                 </div>
 
-                <div className="boards-list-container">
-                    <ul>
+                <div className="boards-list-outer-container">
+                    <div className="boards-title">Personal Boards</div>
+                    <div className="boards-list-container">
                         {
                             this.props.boards.map((board) => 
-                                <li>{board.title}</li>
+                                <div className="boards"><span>{board.title}</span></div>
                             )
                         }
-                        <li onClick={this.createBoard}>+ Create new board...</li>
-                    </ul>
+                        <div className="boards create-button" onClick={this.createBoard}><span>Create New Board</span></div>
+                    </div>
+                    
                 </div>
                 
                 {

@@ -15,10 +15,10 @@ const TeamSchema = new Schema({
       required: true
     },
     admin: [{
-        type: Schema.Types.ObjectId
+        type: String
     }],
     members: [{
-      type: Schema.Types.ObjectId
+      type: String
     }],
     boards: [{
       type: Schema.Types.ObjectId
